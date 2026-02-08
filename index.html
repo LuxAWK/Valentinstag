@@ -58,6 +58,18 @@
       left: 55%;
       top: 150px;
     }
+  @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+    }
+
+    .heart {
+      position: fixed;
+      bottom: 30px;
+      font-size: 24px;
+      animation: floatUp 2s ease-out forwards;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
@@ -101,7 +113,31 @@
 
     // Wenn Ja gedrückt wird
     yesBtn.addEventListener('click', () => {
-      document.body.innerHTML = '<h1>Yaaay! 💘 Ich freue mich riesig! 🥰</h1>';
+      document.body.innerHTML = `
+        <h1>Yaaay! 💘 Ich freue mich riesig! 🥰</h1>
+        <img src="images/me.jpeg" alt="Ich 😌" class="valentine-gif">
+        <form id="loveForm" action="https://formspree.io/f/mjgekbqk" method="POST" style="margin-top:20px; text-align:center;">
+          <label style="font-size:18px; color:#b30059;">Restaurantwunsch?</label><br><br>
+          <input type="text" name="message" placeholder="z.B. Italienisch 🍝" required
+            style="padding:10px; font-size:16px; border-radius:8px; border:1px solid #ccc; width:250px; max-width:90%;">
+          <br><br>
+          <button type="submit" style="background-color:#ff4d6d; color:white; border:none; padding:10px 20px; border-radius:10px; font-size:16px; cursor:pointer;">Absenden 💌</button>
+        </form>
+      `;
+
+      const form = document.getElementById('loveForm');
+      form.addEventListener('submit', () => {
+        for (let i = 0; i < 20; i++) {
+          const heart = document.createElement('div');
+          heart.className = 'heart';
+          heart.textContent = '❤️';
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.animationDuration = 1.5 + Math.random() + 's';
+          document.body.appendChild(heart);
+          setTimeout(() => heart.remove(), 2000);
+        }
+      });
+    });
     });
   </script>
 </body>
