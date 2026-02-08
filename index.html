@@ -115,7 +115,14 @@
     yesBtn.addEventListener('click', () => {
       document.body.innerHTML = `
         <h1>Yaaay! 💘 Ich freue mich riesig! 🥰</h1>
-        <img src="me.jpeg" alt="Me now 🥰" class="valentine-gif">
+        
+       <div style="text-align: center; margin: 20px 0;">
+      <img src="me.jpeg" alt="Ich jetzt total glücklich 🥰" class="valentine-gif" style="max-width: 90%; border-radius: 12px;">
+      <p style="margin-top: 12px; font-size: 1.2em; color: #b30059; font-weight: bold;">
+        Me now 🥰
+      </p>
+    </div>
+    
         <form id="loveForm" action="https://formspree.io/f/mjgekbqk" method="POST" style="margin-top:20px; text-align:center;">
           <label style="font-size:18px; color:#b30059;">Restaurantwunsch?</label><br><br>
           <input type="text" name="message" placeholder="z.B. Italienisch 🍝" required
